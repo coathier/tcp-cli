@@ -108,6 +108,15 @@ int main(int argc, char *argv[]) {
         printf("Usage: %s <ip>", argv[0]);
         return 0;
     }
+    
+    WSADATA wsaData = {0};
+    int iResult = 0;
+
+    iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (iResult != 0) {
+        wprintf(L"WSAStartup failed: %d\n", iResult);
+        return 1;
+    }
 
     int client_socket = bind_socket(argv[1]);
     if (client_socket < 0) {
