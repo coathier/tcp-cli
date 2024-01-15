@@ -6,10 +6,17 @@ libncurses-dev
 
 ## Usage
 You should be able to use the compiler of your choosing.
+### Linux
 ```console
 $ clang -lncurses -o client client.c
 $ ./client <ip>
 ```
+### Windows
+```console
+> gcc -o client.exe client.c -IC:\Users\palda\Downloads\PDCurses-3.8 -lpdcurses -lws2_32
+> ./client.exe <ip>
+```
+
 Write ```exit``` when you are in the application to quit safely.
 
 ## Contribute
