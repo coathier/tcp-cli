@@ -104,13 +104,13 @@ int main(int argc, char *argv[]) {
     bool command_ready = false;
 
     if (argc < 2) {
-        printf("Usage: %s <ip>", argv[0]);
+        printf("Usage: %s <ip>\n", argv[0]);
         return 0;
     }
 
     int client_socket = bind_socket(argv[1]);
     if (client_socket < 0) {
-        printf("Couldn't bind the socket");
+        printf("Couldn't bind the socket\n");
         return 1;
     }
 
