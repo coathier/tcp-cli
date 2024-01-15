@@ -13,7 +13,7 @@ $ ./client <ip>
 ```
 ### Windows
 ```console
-> gcc -o client.exe client.c -IC:\Users\palda\Downloads\PDCurses-3.8 -lpdcurses -lws2_32
+> gcc -o client.exe client.c -IC:\path\to\library\PDCurses-3.8 -lpdcurses -lws2_32
 > ./client.exe <ip>
 ```
 
