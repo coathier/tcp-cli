@@ -12,8 +12,9 @@ $ clang -lncurses -o client client.c
 $ ./client <ip>
 ```
 ### Windows
+This version is very unstable and barely functional, I believe that WPAPoll might not be functional.
 ```console
-> gcc -o client.exe client.c -IC:\path\to\library\PDCurses-3.8 -lpdcurses -lws2_32
+> gcc -o client.exe client_win.c -IC:\path\to\library\PDCurses-3.8 -lpdcurses -lws2_32
 > .\client.exe <ip>
 ```
 
