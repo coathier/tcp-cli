@@ -3,7 +3,8 @@
 #include <string.h>
 #include <winsock2.h>
 #include <curses.h>
-#include <sys/select.h>
+
+void bzero(void *s, size_t n);
 
 #define PORT 4639
 #define BUF_SIZE 256
@@ -114,9 +115,10 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    fd_set fd;
-    FD_ZERO(&fd);
-    FD_SET(client_socket, &fd);
+    struct pollfd socket = (struct pollfd) {
+        .fd = client_socket,
+        .events = POLLIN
+    };
 
     WINDOW *win, *input_win, *output_win;
     win = initscr();
@@ -138,9 +140,9 @@ int main(int argc, char *argv[]) {
 
     char socket_buffer[BUF_SIZE];
     while (running) {
-        select(2, &fd, NULL, NULL, NULL);
 
-        if (FD_ISSET(client_socket, &fd)) {
+        WSAPoll(&socket, 1, 1);
+        if (socket.revents & (POLLRDNORM | POLLRDBAND)) {
             bzero(socket_buffer, size);
             int bytes = read(client_socket, socket_buffer, size);
             if (bytes == 0) continue;
